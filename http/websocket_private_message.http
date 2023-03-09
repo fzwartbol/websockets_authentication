@@ -1,0 +1,44 @@
+POST http://localhost:8180/realms/chatapp/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username=user1&password=password1&client_id=chat-client&client_secret=eEEbffiIK1Jir5AAaXBNIxtnCMFwhfWr
+> {%
+    client.global.set("authTokenUser", response.body.access_token);
+%}
+
+### Request with client messages
+// It is possible to specify client messages in request body. Use '===' to separate messages.
+// Add '=== wait-for-server' above a message to send it after a server response is received.
+// To wait for N responses, add '=== wait-for-server' N times.
+WEBSOCKET ws://localhost:8080/our-websocket
+Content-Type: application/json // We use it for highlighting
+Authorization: Bearer {{authTokenUser}}
+
+===
+{
+  "message": "Hello, server!",
+  "repeat": 3
+}
+
+
+### Requests
+WEBSOCKET ws://localhost:8080/ws/topic/messages
+Content-Type: application/json // We use it for highlighting
+Authorization: Bearer {{authTokenUser}}
+
+===
+{
+  "message": "Hello, server!",
+  "repeat": 3
+}
+
+### Requests
+WEBSOCKET ws://localhost:8080/ws/message
+Content-Type: application/json // We use it for highlighting
+Authorization: Bearer {{authTokenUser}}
+
+===
+{
+  "message": "Hello, server!",
+  "repeat": 3
+}

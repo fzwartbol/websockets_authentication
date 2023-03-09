@@ -1,0 +1,42 @@
+spring:
+  data:
+    mongodb:
+      database=chatapp-mongodb
+  security:
+    user:
+      name: admindev
+      password: password
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    preferIpAddress: true
+keycloak:
+  admin:
+    auth-server-url: http://localhost:8180/
+    realm: master
+    client-id: admin-cli
+    credentials:
+      username: admin
+      password: admin
+  client:
+    issuer: http://localhost:8180/realms/chatapp
+    public-key: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArs+IUv4K/MOw5VZ+DcHQqanEHPErXPRpBLSVguO3CsQ5VWNrkqVp7yOoYdpYiDEMwIqLP4RKOsKaLmrYRG7ct7vGyxcXwraQ61MXWkRnpJ2MLqVYN9pD9U/EmssCdjpvzMN3qy8PDARwvzZfd4SwbJK6/AiNAoYXh4Ax/Iw1dWhTWSKjE7r/qMdrgi9nzPPeAkYNhiC/doDwZ4EvsOT0M1RZ1oBRLbny3dg/OJqL2ru6ZCB2YmZS/W7Y5RUvK3xkTmD/2qZnJV+2Ll+96d4OkFTCh4nKUqj5dosg6/+U4tQNWZUJws7vR861NVkGizdCe/kgFlflmd/EkfjHTargRQIDAQAB"
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: INFO
+        data: INFO
+      keycloak:
+          admin: INFO
+    com:
+      frederikzwartbol:
+        chatws: TRACE
+    root: INFO
+    org.apache:
+      DEBUG

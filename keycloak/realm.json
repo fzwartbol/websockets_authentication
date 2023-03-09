@@ -1,0 +1,29 @@
+{
+  "id": "chatapp",
+  "realm": "chatapp",
+  "enabled": true,
+  "users": [
+    {
+      "username": "user1",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password1",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "user2",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password2",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
